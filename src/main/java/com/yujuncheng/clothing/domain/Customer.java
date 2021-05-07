@@ -3,15 +3,16 @@ package com.yujuncheng.clothing.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Component
 public class Customer {
-    int id;
-    String name;
-    String phone;
-    int sex;
-    String password;
-    String address;
+    private Integer id;
+    private String name;
+    private String phone;
+    private String password;
+    private String address;
 }

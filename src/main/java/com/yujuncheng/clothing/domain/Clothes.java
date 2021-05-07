@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 
 @Data
@@ -13,15 +12,16 @@ import java.math.BigDecimal;
 @Component
 public class Clothes {
 
-    int id;
-    int number;
-    String name;
-    String size;
-    String brand;
-    BigDecimal price;
-    String color;
-    String type;
-    String material;
-    String quantity;
-    String img_name;
+    private Integer id;
+    private Integer number;
+    private String name;
+    private String size;
+    private String brand;
+    private BigDecimal price;
+    private String color;
+    private String type;
+    private String material;
+    private String quantity;
+    private String img_name;
+    private Integer cId;
 }

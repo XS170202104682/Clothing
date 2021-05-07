@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>群岛服饰</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/chosen.min.css">
+    <link rel="stylesheet" href="assets/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="assets/js/fancybox/source/jquery.fancybox.css">
+    <link rel="stylesheet" href="assets/css/jquery.scrollbar.min.css">
+    <link rel="stylesheet" href="assets/css/mobile-menu.css">
+    <link rel="stylesheet" href="assets/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script src="layui/layui.all.js"></script>
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+</head>
+<body class="productsgrid-page">
+<!--header-->
+<header class="header style7" th:insert="~{nozari/hander::hander}">
+</header>
+<!--header-->
+<div class="main-content main-content-product no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="/showClothes">主页</a>
+                        </li>
+                        <li class="trail-item trail-end active">
+                            分类服装
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area shop-grid-content full-width col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <div class="shop-top-control">
+                        <form class="select-item select-form">
+                            <span class="title">Sort</span>
+                            <select data-placeholder="6件/页" class="chosen-select">
+                                <option value="2">9件/页</option>
+                                <option value="1">10件/页</option>
+                                <option value="3">12件/页</option>
+                            </select>
+                        </form>
+                        <div class="grid-view-mode" style="float: right">
+                            <div class="inner">
+                                <a href="/sortUnderWear1" class="modes-mode mode-list">
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                                <a href="/sortUnderWear" class="modes-mode mode-grid  active">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--					服装-->
+                    <ul class="row list-products auto-clear equal-container product-grid">
+                        <!--						服装1开始-->
+                        <table>
+                            <tbody>
+                            <tr th:each="under :${underWear}">
+                                <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                    <div class="product-inner equal-element">
+                                        <div class="product-top">
+                                            <div class="flash">
+											<span class="onnew">
+												<span class="text">
+													new
+												</span>
+											</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-thumb">
+                                            <div class="thumb-inner">
+                                                <a name="detail" th:href="@{/detailClothes(id=${under.id})}" th:value="${under.id}">
+                                                    <img th:src="${under.img_name}" alt="img">
+                                                </a>
+                                                <div class="thumb-group">
+<!--                                                    <a href="#" class="button quick-wiew-button">Quick View</a>-->
+                                                    <div class="loop-form-add-to-cart">
+                                                        <button name="addToCart" th:value="${under.id}" class="single_add_to_cart_button button">Add to cart
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <h5 class="product-name product_title">
+                                                <a href="#" th:text="${under.name}"></a>
+                                            </h5>
+                                            <div class="group-info">
+                                                <div class="stars-rating">
+                                                    <div class="star-rating">
+                                                        <span class="star-3"></span>
+                                                    </div>
+                                                    <div class="count-star">
+                                                        (3)
+                                                    </div>
+                                                </div>
+                                                <div class="price">
+                                                    <ins>
+                                                        ￥<span th:text="${under.price}"></span>
+                                                    </ins>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--						服装1结束-->
+                    </ul>
+                    <div class="pagination clearfix style2">
+                        <div class="nav-link">
+                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
+                            <a href="#" class="page-numbers">1</a>
+                            <a href="#" class="page-numbers">2</a>
+                            <a href="#" class="page-numbers current">3</a>
+                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<footer class="footer style7" th:insert="~{nozari/footer::footer}">
+</footer>
+<!--footer-->
+<a href="#" class="backtotop">
+    <i class="pe-7s-angle-up"></i>
+</a>
+<script>
+    $(":button[name='addToCart']").click(function () {
+        const val = $(this).val();
+        console.log(val);
+        $.ajax({
+            url:"/addToCart?id="+val,
+            success:function (data) {
+                if(data == "添加成功"){
+                    window.alert("添加成功");
+                    location.reload();
+                }else {
+                    window.alert("添加失败");
+                }
+            }
+        });
+    });
+
+</script>
+<script src="assets/js/jquery-1.12.4.min.js"></script>
+<script src="assets/js/jquery.plugin-countdown.min.js"></script>
+<script src="assets/js/jquery-countdown.min.js"></script>
+<script src="http://cdn.bootstrapmb.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/magnific-popup.min.js"></script>
+<script src="assets/js/isotope.min.js"></script>
+<script src="assets/js/jquery.scrollbar.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/chosen.min.js"></script>
+<script src="assets/js/slick.js"></script>
+<script src="assets/js/jquery.elevateZoom.min.js"></script>
+<script src="assets/js/jquery.actual.min.js"></script>
+<script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
+<script src="assets/js/lightbox.min.js"></script>
+<script src="assets/js/owl.thumbs.min.js"></script>
+<script src="assets/js/jquery.scrollbar.min.js"></script>
+<script src='http://ditu.google.cn/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
+<script src="assets/js/frontend-plugin.js"></script>
+</body>
+</html>

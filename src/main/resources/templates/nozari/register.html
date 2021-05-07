@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>群岛服饰</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"/>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/animate.min.css">
+	<link rel="stylesheet" href="assets/css/jquery-ui.css">
+	<link rel="stylesheet" href="assets/css/slick.css">
+	<link rel="stylesheet" href="assets/css/chosen.min.css">
+	<link rel="stylesheet" href="assets/css/pe-icon-7-stroke.css">
+	<link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+	<link rel="stylesheet" href="assets/css/lightbox.min.css">
+	<link rel="stylesheet" href="assets/js/fancybox/source/jquery.fancybox.css">
+	<link rel="stylesheet" href="assets/css/jquery.scrollbar.min.css">
+	<link rel="stylesheet" href="assets/css/mobile-menu.css">
+	<link rel="stylesheet" href="assets/fonts/flaticon/flaticon.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="inblog-page">
+<!--header-->
+<header class="header style7" th:insert="~{nozari/hander::hander}">
+</header>
+<!--header-->
+<div class="main-content main-content-login">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="breadcrumb-trail breadcrumbs">
+					<ul class="trail-items breadcrumb">
+						<li class="trail-item trail-begin">
+							<a href="/showClothes">主页</a>
+						</li>
+						<li class="trail-item trail-end active">
+							注册
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-left: 350px">
+			<div class="content-area col-lg-6 col-md-6 col-sm-6 col-xs-6">
+				<div class="site-main">
+					<div class="customer_login">
+						<div class="row" style="">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="login-item">
+									<h5 class="title-login">注册信息</h5>
+									<form class="register" action="/customerRegister" method="post">
+										<p class="form-row form-row-wide">
+											<label class="text">用户名</label>
+											<input name="name" title="name" type="text" class="input-text">
+										</p>
+										<p class="form-row form-row-wide">
+											<label class="text">密码</label>
+											<input name="password" title="pass" type="password" class="input-text">
+										</p>
+										<p class="form-row form-row-wide">
+											<label class="text">手机</label>
+											<input name="phone" title="phone" type="text" class="input-text">
+										</p>
+										<p class="form-row form-row-wide">
+											<label class="text">地址</label>
+											<input name="address" title="address" type="text" class="input-text">
+										</p>
+										<p class="">
+											<input type="submit" class="button-submit" value="注册">
+										</p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="footer style7" th:insert="~{nozari/footer::footer}">
+</footer>
+<a href="#" class="backtotop">
+	<i class="pe-7s-angle-up"></i>
+</a>
+<script src="assets/js/jquery-1.12.4.min.js"></script>
+<script src="assets/js/jquery.plugin-countdown.min.js"></script>
+<script src="assets/js/jquery-countdown.min.js"></script>
+<script src="http://cdn.bootstrapmb.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/magnific-popup.min.js"></script>
+<script src="assets/js/isotope.min.js"></script>
+<script src="assets/js/jquery.scrollbar.min.js"></script>
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/mobile-menu.js"></script>
+<script src="assets/js/chosen.min.js"></script>
+<script src="assets/js/slick.js"></script>
+<script src="assets/js/jquery.elevateZoom.min.js"></script>
+<script src="assets/js/jquery.actual.min.js"></script>
+<script src="assets/js/fancybox/source/jquery.fancybox.js"></script>
+<script src="assets/js/lightbox.min.js"></script>
+<script src="assets/js/owl.thumbs.min.js"></script>
+<script src="assets/js/jquery.scrollbar.min.js"></script>
+<script src='http://ditu.google.cn/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
+<script src="assets/js/frontend-plugin.js"></script>
+</body>
+</html>

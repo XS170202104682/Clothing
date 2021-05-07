@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:text-aglin="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>修改页面</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/layui.css">
+    <link rel="stylesheet" href="css/sNav.css">
+    <script src="layui/layui.all.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/sNav.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div>
+    <form action="updateCustomer" method="post" style="text-align: center">
+        <div class="form-group">
+            <!--            <span th:text="${error}" style="color:red;"></span>-->
+            <input type="hidden"  readonly="readonly" th:value="${id}" id="id" name="id"><p></p>
+        </div>
+        <div class="form-group">
+            <label>用户名</label>
+            <input type="text" class="form-control" required id="name" name="name" th:value="${name}" placeholder="用户名">
+        </div>
+        <div class="form-group">
+            <label>手机号</label>
+            <input type="text" class="form-control" required id="phone" name="phone" th:value="${phone}" placeholder="手机号">
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            <input type="password" class="form-control" required id="password" name="password" th:value="${password}" placeholder="密码">
+        </div>
+        <div class="form-group">
+            <label>地址</label>
+            <input type="text" class="form-control" required id="address" name="address" th:value="${address}" placeholder="地址">
+        </div>
+        <button name="clo" type="submit" class="btn btn-default">确认修改</button>
+    </form>
+
+
+</div>
+
+<script>
+    $(":button[name='clo']").on('click',function () {
+        //点击后关闭父层layer
+        parent.layer.closeAll();
+    })
+</script>
+</body>
+</html>

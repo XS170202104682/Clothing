@@ -1,0 +1,88 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>群岛服饰</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet">
+</head>
+<style>
+    body{
+        width: 100%;
+        height: 100%;
+        background: url("/images/background.jpg");
+        background-size: cover;
+    }
+</style>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">群岛服饰</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img th:src="@{http://t.cn/RCzsdCq}" class="layui-nav-img">
+                    <span sec:authentication="name" sec:authorize="isAuthenticated()"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a th:href="@{/adminRegister}" sec:authorize="!isAuthenticated()">注册</a></dd>
+                    <dd><a th:href="@{/adminLogin}" sec:authorize="!isAuthenticated()">登录</a></dd>
+                    <dd><a th:href="@{/logout}" sec:authorize="isAuthenticated()">注销</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="layui-body" style="text-align:center;margin-top: 200px;margin-left: -250px">
+        <!-- 内容主体区域 -->
+        <form class="layui-form" th:action="@{/register}" method="post">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手机号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="phone" required  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="submit" class="layui-btn" lay-submit lay-filter="formDemo">注册</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+    //Demo
+    layui.use('form', function(){
+        const form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            alert("注册成功！")
+        });
+    });
+</script>
+</body>
+</html>

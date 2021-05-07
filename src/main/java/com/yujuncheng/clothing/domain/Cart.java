@@ -11,10 +11,17 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class Cart {
 
-    int id;
-    int number;
-    String name;
-    BigDecimal price;
-    String quantity;
-    int cId;
+    private Integer id;
+    private Integer number;
+    private String name;
+    private BigDecimal price;
+    private String quantity;
+    private Integer cId;
+    private String img_name;
+    private String color;
+    private String brand;
+    private String size;
+    private String type;
+    private String material;
+    private BigDecimal totalPrice;
 }
