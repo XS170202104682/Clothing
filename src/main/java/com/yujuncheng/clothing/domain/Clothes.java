@@ -21,7 +21,7 @@ public class Clothes {
     private String color;
     private String type;
     private String material;
-    private String quantity;
+    private Integer quantity;
     private String img_name;
     private Integer cId;
 }

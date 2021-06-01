@@ -98,7 +98,7 @@
                         <!--						服装1开始-->
                         <table>
                             <tbody>
-                            <tr th:each="sbn :${sortByName}">
+                            <tr th:each="sbn:${sortByName}">
                                 <li class="product-item style-list col-lg-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-ts-12">
                                     <div class="product-inner equal-element">
                                         <div class="product-top">
@@ -203,13 +203,13 @@
                     </ul>
                     <div class="pagination clearfix style2">
                         <div class="nav-link">
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-left"
-                                                                aria-hidden="true"></i></a>
-                            <a href="#" class="page-numbers">1</a>
-                            <a href="#" class="page-numbers">2</a>
-                            <a href="#" class="page-numbers current">3</a>
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-right"
-                                                                aria-hidden="true"></i></a>
+<!--                            <a th:href="@{/sortByName(page=${pageInfo.pageNum - 1})}" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>-->
+<!--                            &lt;!&ndash;                     < a href="#" class="page-numbers" th:text="${pageInfo.pageNum}"></ a>&ndash;&gt;-->
+<!--                            <b th:each="nav:${pageInfo.navigatepageNums}">-->
+<!--                                <a class="page-numbers" th:href="'/sortClothes?page='+${nav}" th:text="${nav}" th:if="${nav != pageInfo.pageNum}"></a>-->
+<!--                                <span class="page-numbers" style="font-weight:bold;background: #6faed9;" th:if="${nav == pageInfo.pageNum}" th:text="${nav}"></span>-->
+<!--                            </b>-->
+<!--                            <a th:href="@{/sortByName(page=${pageInfo.pageNum + 1})}" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>-->
                         </div>
                     </div>
                 </div>

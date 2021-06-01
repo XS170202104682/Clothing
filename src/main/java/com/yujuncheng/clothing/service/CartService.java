@@ -21,9 +21,18 @@ public interface CartService {
     int addToOrder(CartVO cartVO);
 
     //查询某用户ID的购物车
-    List<Cart> cartById(Integer id);
+    List<Cart> cartById(Integer cId);
 
     //将购物车植入订单中
     int intoOrder(Integer cId);
+
+    //根据id查服装数量
+    Cart selectQuantity(@Param("id") Integer id);
+
+    //更新服装数量
+    int reduceQuantity(CartVO cartVO);
+
+    //下单后删除购物车
+    int deleteAllCart(Integer cId);
 
 }

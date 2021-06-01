@@ -17,46 +17,17 @@
 <div>
     <form action="updateOrder" method="post" style="text-align: center">
         <div class="form-group">
-            <!--            <span th:text="${error}" style="color:red;"></span>-->
             <input type="hidden"  readonly="readonly" th:value="${id}" id="id" name="id"><p></p>
-            <label >编号</label>
-            <input type="text" class="form-control" required id="number" name="number" th:value="${number}" placeholder="编号">
-        </div>
-        <div class="form-group">
-            <label>名称</label>
-            <input type="text" class="form-control" required id="name" name="name" th:value="${name}" placeholder="名称">
-        </div>
-        <div class="form-group">
             <label>尺寸</label>
             <input type="text" class="form-control" required id="size" name="size" th:value="${size}" placeholder="尺寸">
-        </div>
-        <div class="form-group">
-            <label>品牌</label>
-            <input type="text" class="form-control" required id="brand" name="brand" th:value="${brand}" placeholder="品牌">
-        </div>
-        <div class="form-group">
-            <label>价格</label>
-            <input type="text" class="form-control" required id="price" name="price" th:value="${price}" placeholder="价格">
         </div>
         <div class="form-group">
             <label>颜色</label>
             <input type="text" class="form-control" required id="color" name="color" th:value="${color}" placeholder="颜色">
         </div>
         <div class="form-group">
-            <label>类别</label>
-            <input type="text" class="form-control" required id="type" name="type" th:value="${type}" placeholder="类别">
-        </div>
-        <div class="form-group">
-            <label>材质</label>
-            <input type="text" class="form-control" required id="material" name="material" th:value="${material}" placeholder="材质">
-        </div>
-        <div class="form-group">
             <label>数量</label>
             <input type="text" class="form-control" required id="quantity" name="quantity" th:value="${quantity}" placeholder="数量">
-        </div>
-        <div class="form-group">
-            <label>图片</label>
-            <input type="text" class="form-control" required id="img_name" name="img_name" th:value="${img_name}" placeholder="图片">
         </div>
         <button name="clo" type="submit" class="btn btn-default">确认修改</button>
     </form>

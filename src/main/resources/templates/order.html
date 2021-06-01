@@ -14,7 +14,7 @@
         <div class="layui-logo">群岛服饰</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a th:href="@{/showClothes}">前端首页</a></li>
+            <li class="layui-nav-item"><a th:href="@{/showClothes}" target="_blank">前端首页</a></li>
             <li class="layui-nav-item"><a th:href="@{/toClothes}">商品管理</a></li>
             <li class="layui-nav-item"><a th:href="@{/toCustomer}">用户</a></li>
         </ul>
@@ -123,7 +123,7 @@
                     ,{fixed: 'right',title:'操作', width:175, align:'center', toolbar: '#barDemo'}
                 ]]
             ,parseData: function(res){
-                // console.log(res.data);
+                console.log(res.data);
                 return {
                     "code": res.code,
                     "msg": res.msg,
@@ -144,7 +144,7 @@
                     }
                     , where: {
                         // key: {
-                        'customerId': demoReload
+                        'phone': demoReload
                         // }
                     }
                 });
@@ -169,7 +169,6 @@
                         method: "POST",
                         success:function (data) {
                             if (data == "删除成功"){
-                                window.alert(data);
                                 location.reload();
                             }else{
                                 window.alert("删除失败");
@@ -183,7 +182,7 @@
                 layer.open({
                     type: 2
                     ,title:'编辑'
-                    ,area:['400px','600px']
+                    ,area:['400px','320px']
                     ,shadeClose:true
                     ,content: "/toUpdate?id="+id
                     ,anim:5

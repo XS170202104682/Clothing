@@ -15,7 +15,7 @@ public class Cart {
     private Integer number;
     private String name;
     private BigDecimal price;
-    private String quantity;
+    private Integer quantity;
     private Integer cId;
     private String img_name;
     private String color;

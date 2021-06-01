@@ -30,13 +30,12 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-
         //adimn
         if (ObjectUtil.isNotNull(adminService.adminByUsername(name))){
             Admin admin = adminService.adminByUsername(name);
 
             if (admin == null){
-                throw new UsernameNotFoundException("用户不存在") ;
+                throw new BadCredentialsException("账号或密码错误");
             }
 
             return new User(
@@ -51,7 +50,7 @@ public class MyUserDetailsService implements UserDetailsService {
             Customer customer = customerService.customerByUsername(name);
 
             if (customer == null){
-                throw new UsernameNotFoundException("用户不存在") ;
+                throw new BadCredentialsException("账号或密码错误");
             }
 
             return new User(
@@ -63,4 +62,5 @@ public class MyUserDetailsService implements UserDetailsService {
 
         throw new BadCredentialsException("账号或密码错误");
     }
+
 }

@@ -25,4 +25,5 @@ public class Order {
     private Integer customerId;
     private String phone;
     private BigDecimal totalPrice;
+    private String time;
 }

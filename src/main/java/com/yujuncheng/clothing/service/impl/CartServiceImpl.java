@@ -32,13 +32,28 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<Cart> cartById(Integer id) {
-        return cartDao.cartById(id);
+    public List<Cart> cartById(Integer cId) {
+        return cartDao.cartById(cId);
     }
 
     @Override
     public int intoOrder(Integer cId) {
         return cartDao.intoOrder(cId);
+    }
+
+    @Override
+    public Cart selectQuantity(Integer id) {
+        return cartDao.selectQuantity(id);
+    }
+
+    @Override
+    public int reduceQuantity(CartVO cartVO) {
+        return cartDao.reduceQuantity(cartVO);
+    }
+
+    @Override
+    public int deleteAllCart(Integer cId) {
+        return cartDao.deleteAllCart(cId);
     }
 
 }

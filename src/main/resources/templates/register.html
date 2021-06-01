@@ -23,7 +23,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img th:src="@{http://t.cn/RCzsdCq}" class="layui-nav-img">
-                    <span sec:authentication="name" sec:authorize="isAuthenticated()"></span>
+                    <span sec:authentication="name"></span>
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a th:href="@{/adminRegister}" sec:authorize="!isAuthenticated()">注册</a></dd>

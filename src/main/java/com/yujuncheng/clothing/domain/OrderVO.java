@@ -12,4 +12,5 @@ import org.springframework.stereotype.Component;
 public class OrderVO {
     private int customerId;
     private String phone;
+    private String time;
 }

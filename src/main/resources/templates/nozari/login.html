@@ -23,6 +23,24 @@
 	<link rel="stylesheet" href="assets/css/mobile-menu.css">
 	<link rel="stylesheet" href="assets/fonts/flaticon/flaticon.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<script type="text/javascript">
+		$(function () {
+			$("div.loginErrorMessageDiv").hide();
+			//验证不能为空
+			$("form.register").submit(function(){
+				if(0==$("#name").val().length||0==$("#password").val().length){
+					$("span.errorMessage").html("账号或密码不能为空");
+					$("div.loginErrorMessageDiv").show();
+					return false;
+				}
+				return true;
+			});
+			if("${error}"=="true"){
+				$("span.errorMessage").html("账号或密码错误");
+				$("div.loginErrorMessageDiv").show();
+			}
+		})
+	</script>
 </head>
 <body class="inblog-page">
 <!--header-->
@@ -56,11 +74,11 @@
 									<form class="register" action="customerLogin" method="post">
 										<p class="form-row form-row-wide">
 											<label class="text">用户名</label>
-											<input name="name" title="name" type="text" class="input-text">
+											<input id="name" name="name" title="name" type="text" class="input-text" required>
 										</p>
 										<p class="form-row form-row-wide">
 											<label class="text">密码</label>
-											<input name="password" title="pass" type="password" class="input-text">
+											<input id="password" name="password" title="pass" type="password" class="input-text" required>
 										</p>
 										<p class="">
 											<input type="submit" class="button-submit" value="登录">

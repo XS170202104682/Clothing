@@ -26,13 +26,26 @@ public interface CartDao {
 
     //查询某用户ID的购物车
     @Select("select * from `cart` where cId = #{cId}")
-    List<Cart> cartById(Integer id);
+    List<Cart> cartById(Integer cId);
 
     //将购物车植入订单中
     @Insert("insert into `order` (number, name, price, quantity, img_name, color, brand, size, type, material, totalPrice, customerId) " +
             "select number, name, price, quantity, img_name, color, brand, size, type, material, totalPrice, cId" +
             " from `cart` where cId = #{cId}")
     int intoOrder(Integer cId);
+
+    //根据id查服装数量
+    @Select("select * from `cart` where id = #{id}")
+    Cart selectQuantity(@Param("id") Integer id);
+
+    //更新服装数量
+    @Update("update `cart` set quantity = #{quantity} where id = #{id}")
+    int reduceQuantity(CartVO cartVO);
+
+    //下单后删除购物车
+    @Delete("delete from `cart` where cId = #{cId}")
+    int deleteAllCart(Integer cId);
+
 
 
 }

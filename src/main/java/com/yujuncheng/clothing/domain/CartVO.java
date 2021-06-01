@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Component
 public class CartVO {
+    private int id;
     private int cId;
     private BigDecimal totalPrice;
+    private int quantity;
 }

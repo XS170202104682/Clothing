@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -42,7 +43,7 @@ public class LoginController {
     @RequestMapping("login1")
     public String  login(@RequestParam("name") String name, @RequestParam("password") String password){
         System.out.println(name);
-        adminService.login(name, password);
+        Admin admin = adminService.login(name, password);
         return "index";
     }
 
@@ -89,5 +90,7 @@ public class LoginController {
         session.setAttribute("ctr",null);
         return "nozari/index";
     }
+
+
 
 }

@@ -26,12 +26,13 @@ public class OrderController {
     public HashMap<String, Object> order(
             @RequestParam(defaultValue = "1",required = false) int page,
             @RequestParam(defaultValue = "10",required = false) int limit,
-            @RequestParam(value = "customerId",required = false) String phone,
+            @RequestParam(value = "phone",required = false) String phone,
             Order order
     ) {
         if (phone == null) {
             PageHelper.startPage(page, limit);
             List<Order> list = orderService.selectOrder();
+            System.out.println(list);
             PageInfo pageInfo = new PageInfo(list);
             HashMap<String, Object> hashMap = new HashMap<String, Object>();
             hashMap.put("data",pageInfo.getList());
@@ -87,7 +88,7 @@ public class OrderController {
         return "updateOrder";
     }
 
-    //修改服装
+    //修改订单
     @RequestMapping("updateOrder")
     public String modifiedClothes(Order order){
         orderService.updateOrder(order);

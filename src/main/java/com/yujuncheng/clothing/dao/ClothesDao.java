@@ -45,10 +45,11 @@ public interface ClothesDao {
     /*
     *修改服装
      */
+    @Options(useGeneratedKeys =true, keyProperty = "id")
     @Update("update clothes set name = #{name}, number = #{number}," +
             "size = #{size}, brand = #{brand}, price = #{price}," +
             "color = #{color}, type = #{type}, material = #{material}," +
-            "quantity = #{quantity}, img_name = #{img_name}" +
+            "quantity = #{quantity} " +
             "where id = #{id}")
     int updateClothes(Clothes clothes);
 
@@ -85,7 +86,7 @@ public interface ClothesDao {
             " #{type}, #{material}, #{quantity}, #{img_name}, 3)")
     int addUnderWear(Clothes clothes);
 
-    @Select("select * from `clothes` where cID = 1 and `number` like CONCAT('%',#{number},'%')")
+    @Select("select * from `clothes` where cID = 1 and `name` like CONCAT('%',#{name},'%')")
     List<Clothes> findName(Clothes clothes);
 
     //模糊查询鞋子

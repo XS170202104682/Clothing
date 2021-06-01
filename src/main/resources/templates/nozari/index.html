@@ -85,7 +85,6 @@
                                         <img th:src="${list1.img_name}" alt="img">
                                     </a>
                                     <div class="thumb-group">
-<!--                                        <a href="#" class="button quick-wiew-button">Quick View</a>-->
                                         <div class="loop-form-add-to-cart">
                                             <button name="addToCart" th:value="${list1.id}" class="single_add_to_cart_button button">Add to cart</button>
                                         </div>
@@ -98,7 +97,6 @@
                             </div>
                             <div class="product-info">
                                 <h5 class="product-name product_title" th:text="${list1.name}">
-<!--                                    <a href="#">Long Sleeve Midi</a>-->
                                 </h5>
                                 <div class="group-info">
                                     <div class="stars-rating">
@@ -153,7 +151,6 @@
                                                 <img th:src="${shoes1.img_name}" alt="img">
                                             </a>
                                             <div class="thumb-group">
-<!--                                                <a href="#" class="button quick-wiew-button">Quick View</a>-->
                                                 <div class="loop-form-add-to-cart">
                                                     <button name="addToCart" th:value="${shoes1.id}" class="single_add_to_cart_button button">Add to cart</button>
                                                 </div>
@@ -166,7 +163,6 @@
                                     </div>
                                     <div class="product-info">
                                         <h5 class="product-name product_title" th:text="${shoes1.name}">
-                                            <!--                                    <a href="#">Long Sleeve Midi</a>-->
                                         </h5>
                                         <div class="group-info">
                                             <div class="stars-rating">
@@ -203,7 +199,7 @@
                      data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":4}},{"breakpoint":"1200","settings":{"slidesToShow":3}},{"breakpoint":"992","settings":{"slidesToShow":2}},{"breakpoint":"480","settings":{"slidesToShow":1}}]'>
                     <table>
                         <tbody>
-                        <tr th:each="list1 :${list}">
+                        <tr th:each="list1 :${underWear}">
                             <div class="product-item style-5">
                                 <div class="product-inner equal-element">
                                     <div class="product-top">
@@ -221,7 +217,6 @@
                                                 <img th:src="${list1.img_name}" alt="img">
                                             </a>
                                             <div class="thumb-group">
-<!--                                                <a href="#" class="button quick-wiew-button">Quick View</a>-->
                                                 <div class="loop-form-add-to-cart">
                                                     <button name="addToCart" th:value="${list1.id}" class="single_add_to_cart_button button">Add to cart</button>
                                                 </div>
@@ -234,7 +229,6 @@
                                     </div>
                                     <div class="product-info">
                                         <h5 class="product-name product_title" th:text="${list1.name}">
-                                            <!--                                    <a href="#">Long Sleeve Midi</a>-->
                                         </h5>
                                         <div class="group-info">
                                             <div class="stars-rating">
@@ -332,8 +326,10 @@
             success:function (data) {
                 if(data == "添加成功"){
                     window.alert("添加成功");
+                }else if(data == "请您先登录"){
+                    window.alert("请您先登录");
                 }else {
-                    window.alert("添加失败");
+                    window.alert("添加失败")
                 }
             }
         });

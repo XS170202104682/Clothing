@@ -4,5 +4,10 @@
       "name": "spring.thymeleaf.content-type",
       "type": "java.lang.String",
       "description": "Description for spring.thymeleaf.content-type."
-  }
-] }
+    },
+    {
+      "name": "AbstractUserDetailsAuthenticationProvider.badCredentials",
+      "type": "java.lang.String",
+      "description": "Description for AbstractUserDetailsAuthenticationProvider.badCredentials."
+    }
+  ] }

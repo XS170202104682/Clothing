@@ -67,4 +67,5 @@ public interface ClothesService {
 
     //上传文件
     int setImageUrl(ProductVO vo);
+
 }

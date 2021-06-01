@@ -55,10 +55,10 @@
 					<div class="shop-top-control">
 						<form class="select-item select-form">
 							<span class="title">Sort</span>
-							<select data-placeholder="6件/页" class="chosen-select">
-								<option value="2">9件/页</option>
-								<option value="1">10件/页</option>
-								<option value="3">12件/页</option>
+							<select data-placeholder="8件/页" class="chosen-select">
+								<option value="1"><a th:href="@{/sortClothes(page=8)}">8件/页</a></option>
+								<option value="2"><a th:href="@{/sortClothes(page=12)}">12件/页</a></option>
+								<option value="3"><a th:href="@{/sortClothes(page=16)}">16件/页</a></option>
 							</select>
 						</form>
 						<div class="grid-view-mode" style="float: right">
@@ -81,7 +81,7 @@
 <!--						服装1开始-->
 						<table>
 							<tbody>
-							<tr th:each="cloth :${clothes}">
+							<tr th:each="cloth:${pageInfo.list}">
 						<li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
 							<div class="product-inner equal-element">
 								<div class="product-top">
@@ -136,11 +136,13 @@
 					</ul>
 					<div class="pagination clearfix style2">
 						<div class="nav-link">
-							<a href="#" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
-							<a href="#" class="page-numbers">1</a>
-							<a href="#" class="page-numbers">2</a>
-							<a href="#" class="page-numbers current">3</a>
-							<a href="#" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
+							<a th:href="@{/sortClothes(page=${pageInfo.pageNum - 1})}" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
+<!--							<a href="#" class="page-numbers" th:text="${pageInfo.pageNum}"></a>-->
+							<b th:each="nav:${pageInfo.navigatepageNums}">
+								<a class="page-numbers" th:href="'/sortClothes?page='+${nav}" th:text="${nav}" th:if="${nav != pageInfo.pageNum}"></a>
+								<span class="page-numbers" style="font-weight:bold;background: #6faed9;" th:if="${nav == pageInfo.pageNum}" th:text="${nav}"></span>
+							</b>
+							<a th:href="@{/sortClothes(page=${pageInfo.pageNum + 1})}" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
 						</div>
 					</div>
 				</div>

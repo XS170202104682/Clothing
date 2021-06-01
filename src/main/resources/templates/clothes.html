@@ -27,7 +27,7 @@
         <div class="layui-logo">群岛服饰</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a th:href="@{/showClothes}">前端首页</a></li>
+            <li class="layui-nav-item"><a th:href="@{/showClothes}" target="_blank">前端首页</a></li>
             <li class="layui-nav-item"><a th:href="@{/toClothes}">商品管理</a></li>
             <li class="layui-nav-item"><a th:href="@{/toCustomer}">用户</a></li>
         </ul>
@@ -170,22 +170,20 @@
             }
         });
         var active = {
-        reload: function() {
-            var demoReload = window.document.getElementById('demoReload').value;
-            //执行重载
-            table.reload('testReload', {
-                method: 'get'
-                , page: {
-                    curr: 1 //重新从第 1 页开始
-                }
-                , where: {
-                    // key: {
-                    'number': demoReload
-                    // }
-                }
+            reload: function() {
+                var demoReload = window.document.getElementById('demoReload').value;
+                //执行重载
+                table.reload('testReload', {
+                    method: 'get'
+                    , page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    , where: {
+                        'name': demoReload
+                    }
                 });
-              }
-            };
+            }
+        };
 
         $('#search').on('click', function(){
             var type = $(this).data('type');
@@ -201,13 +199,11 @@
             // console.log(id);
             if(obj.event === 'del'){
                 layer.confirm('确认删除', function(index){
-                    // obj.del();
                     $.ajax({
                         url: "/deleteClothes?id="+id,
                         method: "POST",
                         success:function (data) {
                             if (data == "删除成功"){
-                                window.alert(data);
                                 location.reload();
                             }else{
                                 window.alert("删除失败");

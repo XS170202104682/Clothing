@@ -6,25 +6,17 @@ import com.yujuncheng.clothing.domain.Clothes;
 import com.yujuncheng.clothing.domain.ProductVO;
 import com.yujuncheng.clothing.service.ClothesService;
 import com.yujuncheng.clothing.util.UploadUtil;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 public class ClothesController {
@@ -38,10 +30,10 @@ public class ClothesController {
     public HashMap<String, Object> clothes(
             @RequestParam(defaultValue = "1",required = false) int page,
             @RequestParam(defaultValue = "10",required = false) int limit,
-            @RequestParam(value = "number",required = false) Integer number,
+            @RequestParam(value = "name",required = false) String name,
             Clothes clothes
     ) {
-        if(number == null){
+        if(name == null){
             PageHelper.startPage(page, limit);
             List<Clothes> list = clothesService.selectClothes();
             PageInfo pageInfo = new PageInfo(list);
@@ -181,20 +173,53 @@ public class ClothesController {
 
     //修改服装
     @RequestMapping("modifiedClothes")
-    public String modifiedClothes(Clothes clothes){
+    public String modifiedClothes(Clothes clothes, HttpSession session, UploadUtil upload) throws IOException {
         clothesService.updateClothes(clothes);
+        if (upload != null) {
+            String imageName = clothes.getId()+".jpg";
+            System.out.println(imageName);
+            File file = new File(session.getServletContext().getRealPath("images/"),imageName);
+            file.getParentFile().mkdirs();
+            upload.getImage().transferTo(file);
+            ProductVO vo = new ProductVO();
+            vo.setId(clothes.getId());
+            vo.setImg_name("images/"+imageName);
+            clothesService.setImageUrl(vo);
+        }
         return "redirect:/clothes";
     }
     //修改鞋袜
     @RequestMapping("modifiedShoes")
-    public String modifiedShoes(Clothes clothes){
+    public String modifiedShoes(Clothes clothes, HttpSession session, UploadUtil upload) throws IOException {
         clothesService.updateClothes(clothes);
+        if (upload != null) {
+            String imageName = clothes.getId()+".jpg";
+            System.out.println(imageName);
+            File file = new File(session.getServletContext().getRealPath("images/"),imageName);
+            file.getParentFile().mkdirs();
+            upload.getImage().transferTo(file);
+            ProductVO vo = new ProductVO();
+            vo.setId(clothes.getId());
+            vo.setImg_name("images/"+imageName);
+            clothesService.setImageUrl(vo);
+        }
         return "redirect:/shoe";
     }
     //修改内衣裤
     @RequestMapping("modifiedUnderWear")
-    public String modifiedUnderWear(Clothes clothes){
+    public String modifiedUnderWear(Clothes clothes, HttpSession session, UploadUtil upload) throws IOException {
         clothesService.updateClothes(clothes);
+        if (upload != null) {
+            String imageName = clothes.getId()+".jpg";
+            System.out.println(imageName);
+            File file = new File(session.getServletContext().getRealPath("images/"),imageName);
+            file.getParentFile().mkdirs();
+            upload.getImage().transferTo(file);
+            ProductVO vo = new ProductVO();
+            vo.setId(clothes.getId());
+            vo.setImg_name("images/"+imageName);
+            clothesService.setImageUrl(vo);
+        }
         return "redirect:/underWear";
     }
 
@@ -223,7 +248,7 @@ public class ClothesController {
             vo.setImg_name("images/"+imageName);
             clothesService.setImageUrl(vo);
         }
-        return "clothes";
+        return "redirect:/toClothes";
     }
 
     //跳转到新增鞋袜页面
@@ -232,7 +257,7 @@ public class ClothesController {
         return "addShoes";
     }
 
-    //新增服装
+    //新增鞋袜
     @RequestMapping("addShoes")
     public String addShoes(Clothes clothes, HttpSession session, UploadUtil upload) throws IOException {
         clothesService.addShoes(clothes);
@@ -250,7 +275,7 @@ public class ClothesController {
             vo.setImg_name("images/"+imageName);
             clothesService.setImageUrl(vo);
         }
-        return "shoe";
+        return "redirect:/toShoes";
     }
 
     //跳转到新增内衣裤页面
@@ -277,7 +302,7 @@ public class ClothesController {
             vo.setImg_name("images/"+imageName);
             clothesService.setImageUrl(vo);
         }
-        return "underWear";
+        return "redirect:/toUnderWear";
     }
 
 

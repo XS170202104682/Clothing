@@ -41,6 +41,18 @@
 
             $(".quantity-plus").each(function(i){
                 $(this).attr('id','id1_'+i);
+                $("#id1_"+i).click(function () {
+                    var val = $(this).parent().parent().parent().parent().children().children(".layui-btn-sm").val();
+                    $.ajax({
+                        url:"/addQuantity?id="+val,
+                        async:false,
+                        success:function (data) {
+                            if(data == "增加成功"){
+                                console.log(val);
+                            }
+                        }
+                    });
+                });
                 i++;
             });
             $(".qty").each(function(i){
@@ -49,6 +61,19 @@
             $(".quantity-minus").each(function(i){
                 $(this).attr('id','id2_'+i);
                 $("#id2_"+i).click(function () {
+                    var val = $(this).parent().parent().parent().parent().children().children(".layui-btn-sm").val();
+                    $.ajax({
+                        url:"/reduceQuantity?id="+val,
+                        async:false,
+                        success:function (data) {
+                            if(data == "减少成功"){
+                                console.log(val);
+                            }else if(data =="删除服装"){
+                                window.alert("服装删除了");
+                                location.reload();
+                            }
+                        }
+                    });
                     var goods_price = parseInt($(this).parent().parent().parent().parent().children().children().children(".woocommerce-Price-currencySymbol").text());
                     var num = $(".quantity-minus").parent().children("#qty_"+i).val();
                     if (num >= 1){
@@ -164,10 +189,10 @@
                                         <td class="product-quantity productQuan" data-title="Quantity">
                                             <div class="quantity">
                                                 <div class="control">
-                                                    <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                    <a class="btn-number qtyminus quantity-minus" name="reduce" href="javascript:void(0)">-</a>
                                                     <input type="text" data-step="1" data-min="0" th:value="${cart.quantity}" title="Qty"
                                                            class="input-qty qty" size="4">
-                                                    <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                                    <a href="javascript:void(1)" class="btn-number qtyplus quantity-plus" name="plus">+</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -226,7 +251,6 @@
     $(":button[name='del']").click(function () {
         var val = $(this).val();
         console.log(val);
-
         layer.open({
             type: 1,
             content: '确定要删除吗',
@@ -251,8 +275,28 @@
             }
 
         });
-    })
+    });
 </script>
+<!--<script>-->
+<!--    $("[href='javascript:void(0)']").click(function () {-->
+<!--        var val = $(this).parent().parent().parent().parent().children().children(".layui-btn-sm").val();-->
+<!--        console.log(val);-->
+<!--        $.ajax({-->
+<!--            url:"/reduceQuantity?id="+val,-->
+<!--            type:'get',-->
+<!--            async:false,-->
+<!--            contentType:'application/json',-->
+<!--            dataType:'json',-->
+<!--            success:function (data) {-->
+<!--                if(data == "减少成功"){-->
+<!--                    window.alert("添加成功");-->
+<!--                }else {-->
+<!--                    window.alert("添加失败")-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 <script src="assets/js/jquery-1.12.4.min.js"></script>
 <script src="assets/js/jquery.plugin-countdown.min.js"></script>
 <script src="assets/js/jquery-countdown.min.js"></script>

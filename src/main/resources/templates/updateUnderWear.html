@@ -15,7 +15,7 @@
 <body>
 
 <div>
-    <form action="modifiedUnderWear" method="post" style="text-align: center">
+    <form action="modifiedUnderWear" method="post" style="text-align: center" enctype="multipart/form-data">
         <div class="form-group">
 <!--            <span th:text="${error}" style="color:red;"></span>-->
             <input type="hidden"  readonly="readonly" th:value="${under.id}" id="id" name="id"><p></p>
@@ -59,7 +59,7 @@
         </div>
         <div class="form-group">
             <label>图片</label>
-            <input type="text" class="form-control" required id="img_name" name="img_name" th:value="${under.img_name}" placeholder="图片">
+            <input type="file" name="image" accept="image/*"/>
         </div>
         <button name="clo" type="submit" class="btn btn-default">确认修改</button>
     </form>

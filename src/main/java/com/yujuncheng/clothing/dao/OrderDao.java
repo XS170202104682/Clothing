@@ -17,7 +17,7 @@ public interface OrderDao {
     /*
      * 查询订单
      */
-    @Select("select * from `order` where customerId IN (select cId from `cart`)")
+    @Select("select * from `order`")
     List<Order> selectOrder();
 
     /*
@@ -29,11 +29,8 @@ public interface OrderDao {
     /*
      *修改订单
      */
-    @Update("update `order` set number = #{number}, name = #{name}, " +
-            "price = #{price}, quantity = #{quantity}， size = #{size}," +
-            "brand = #{brand}, color = #{color}, type = #{type}," +
-            "material = #{material}"+
-            "where id = #{id}")
+    @Update("update `order` set size = #{size}, color = #{color}," +
+            "quantity = #{quantity} where id = #{id}")
     int updateOrder(Order order);
 
     /*
@@ -43,10 +40,10 @@ public interface OrderDao {
     Order selectById(@Param("id") int id);
 
     //模糊查询订单
-    @Select("select * from `order` where `customerId` like CONCAT('%',#{customerId},'%')")
+    @Select("select * from `order` where `phone` like CONCAT('%',#{phone},'%')")
     List<Order> findOrder(Order order);
 
     //将用户手机存入订单中
-    @Update("update `order` set phone = #{phone}")
+    @Update("update `order` set phone = #{phone}, time = #{time} where customerId = #{customerId}")
     int insertPhone(OrderVO orderVO);
 }
